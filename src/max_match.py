@@ -2,9 +2,12 @@ import re
 
 
 def max_match(sentence, dictionary):
-    """Segment a sentence to words/tokens."""
+    """
+    MaxMatch algorithm for segmenting a sentence into a list of 
+    words/tokens.
+    """
 
-    # We remove whitespace from sentence.
+    # We first remove whitespace from sentence.
     sentence = re.sub('\W', '', sentence)
 
     # For now, we're not really concerned with efficiency.
@@ -27,4 +30,7 @@ def max_match(sentence, dictionary):
 
 
 def word_error_rate(segmented, gold):
-    pass
+    """
+    Word error rate is the normalized edit distance b/w the segmented
+    output list of words and the gold sentence words.
+    """
