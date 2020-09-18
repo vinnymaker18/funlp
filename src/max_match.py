@@ -1,5 +1,6 @@
 import re
 
+from min_edit_distance import min_edit_distance
 
 def max_match(sentence, dictionary):
     """
@@ -31,6 +32,13 @@ def max_match(sentence, dictionary):
 
 def word_error_rate(segmented, gold):
     """
-    Word error rate is the normalized edit distance b/w the segmented
-    output list of words and the gold sentence words.
+    Word error rate is a metric used to measure accuracy of a segmentation
+    algorithm. It's the normalized edit distance b/w the list of words 
+    outputted by the algorithm and the hand segmented gold list of words.
     """
+
+    # Deletion, insertion and modification all cost 1.
+    edit_dist = min_edit_distance(segmented, gold)
+    normalized_edit_dist = edit_dist / len(gold)
+
+    return normalized_edit_dist
