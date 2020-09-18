@@ -1,6 +1,7 @@
 """Common algorithms encountered in NLP."""
 
 
+# Levenshtein distance.
 def min_edit_distance(original,
                       target,
                       delete_cost = 1,
@@ -24,7 +25,7 @@ def min_edit_distance(original,
 
     # We use a constant substitution const of 1 when the function is not
     # specified.
-    subst_cost = subst_cost or (lambda a, b: 1)
+    subst_cost = subst_cost or (lambda a, b: 1 if a != b else 0)
 
     # We use dynamic programming to compute minimal edit distance b/w two
     # lists. If m = |original| and n = |target|, then runtime complexity 
@@ -46,7 +47,7 @@ def min_edit_distance(original,
             dp2[j] = min(dp2[j], insert_cost + dp2[j - 1])
 
             # Modify original[i] into target[j]
-            dp2[j] = min(dp2[j], subst_cost(original[i], target[j]) + dp[j - 1])
+            dp2[j] = min(dp2[j], subst_cost(original[i - 1], target[j - 1]) + dp[j - 1])
 
         dp = dp2
 

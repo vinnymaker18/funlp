@@ -1,3 +1,5 @@
+"""Word segmentation algorithms."""
+
 import re
 
 from min_edit_distance import min_edit_distance
@@ -17,7 +19,7 @@ def max_match(sentence, dictionary):
         # Pick the longest prefix from position pos that's present in
         # the dictionary. If no prefix is in dictionary, pick single
         # letter as the next word.
-        for j in range(len(), pos + 1, -1):
+        for j in range(len(sentence), pos + 1, -1):
             word = sentence[pos : j]
             if word in dictionary:
                 pos = j

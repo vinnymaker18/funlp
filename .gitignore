@@ -133,6 +133,7 @@ pyvenv.cfg
 bin/
 include/
 lib64
+share/
 
 # Vim swap files.
 .*swp
